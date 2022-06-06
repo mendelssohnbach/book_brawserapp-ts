@@ -40,12 +40,20 @@ export class TaskCollection {
     this.storage.setItem(STORAGE_KEY, JSON.stringify(this.tasks));
   }
 
-  private getStoredTasks(): Taks[] {
+  private getStoredTasks() {
     const jsonString = this.storage.getItem(STORAGE_KEY);
 
     if (!jsonString) return [];
 
-    console.log(jsonString);
-    return [];
+    try {
+      const storedTasks: any[] = JSON.parse(jsonString);
+      const tasks = storedTasks.map((task) => new Task(task));
+
+      console.log(tasks);
+      return tasks;
+    } catch {
+      this.storage.removeItem(STORAGE_KEY);
+      return [];
+    }
   }
 }
