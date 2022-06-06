@@ -21,7 +21,13 @@ export class TaskRenderer {
 
     if (!taskEl) return;
 
-    this.todoList.removeChild(taskEl);
+    if (task.status === statusMap.doing) {
+      this.doingList.removeChild(taskEl);
+    }
+
+    if (task.status === statusMap.done) {
+      this.doneList.removeChild(taskEl);
+    }
   }
 
   subscribeDragAndDrop(onDrop: (el: Element, sibling: Element | null, newStatus: Status) => void) {
