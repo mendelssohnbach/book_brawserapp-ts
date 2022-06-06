@@ -40,7 +40,7 @@ class Application {
 
     this.eventListener.remove(task.id);
     this.taskCollection.delete(task);
-    console.log('After', this.taskCollection);
+    this.taskRenderer.remove(task);
   };
 }
 
