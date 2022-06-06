@@ -39,6 +39,8 @@ class Application {
     if (!window.confirm(`「${task.title}」を削除してよろしいですか？`)) return;
 
     this.eventListener.remove(task.id);
+    this.taskCollection.delete(task);
+    console.log('After', this.taskCollection);
   };
 }
 
