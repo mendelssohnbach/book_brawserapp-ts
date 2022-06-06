@@ -1,3 +1,5 @@
+import dragula from 'dragula';
+
 import { Task } from './Task';
 
 export class TaskRenderer {
@@ -20,6 +22,18 @@ export class TaskRenderer {
     if (!taskEl) return;
 
     this.todoList.removeChild(taskEl);
+  }
+
+  subscribeDragAndDrop() {
+    dragula([this.todoList, this.doingList, this.doneList]).on(
+      'drop',
+      (el, target, source, sibling) => {
+        console.log(el);
+        console.log(target);
+        console.log(source);
+        console.log(sibling);
+      }
+    );
   }
 
   private render(task: Task) {
