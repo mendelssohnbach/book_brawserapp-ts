@@ -8,6 +8,8 @@ class Application {
     if (!button) return;
 
     eventListener.add('sample', 'click', button, () => alert('clicked'));
+
+    eventListener.remove('sample');
   }
 }
 
