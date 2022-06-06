@@ -3,7 +3,7 @@ import { Task } from './Task';
 export class TaskRenderer {
   constructor(
     private readonly todoList: HTMLElement,
-    private readonly dogingList: HTMLElement,
+    private readonly doingList: HTMLElement,
     private readonly doneList: HTMLElement
   ) {}
 
