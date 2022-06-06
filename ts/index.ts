@@ -52,9 +52,14 @@ class Application {
 
     if (!taskId) return;
 
-    console.log('taskId: ', taskId);
-    console.log('sibling: ', sibling);
-    console.log('newStatus: ', newStatus);
+    const task = this.taskCollection.find(taskId);
+
+    if (!task) return;
+
+    task.update({ status: newStatus });
+    this.taskCollection.update(task);
+
+    console.log(sibling);
   };
 }
 
