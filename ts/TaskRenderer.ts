@@ -21,6 +21,10 @@ export class TaskRenderer {
 
     if (!taskEl) return;
 
+    if (task.status === statusMap.todo) {
+      this.todoList.removeChild(taskEl);
+    }
+
     if (task.status === statusMap.doing) {
       this.doingList.removeChild(taskEl);
     }

@@ -62,6 +62,6 @@ export class TaskCollection {
 
 function assertIsTaskObjects(value: any): asserts value is TaskObject[] {
   if (!Array.isArray(value) || !value.every((item) => Task.validate(item))) {
-    throw new Error('引数「value」は TaskObject[]型と一致しません。');
+    throw new Error('引数「value」は TaskObject[] 型と一致しません。');
   }
 }
