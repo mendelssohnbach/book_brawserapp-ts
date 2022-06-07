@@ -1,17 +1,21 @@
 import { v4 as uuid } from 'uuid';
 
+type Handler<T> = T extends keyof HTMLElementEventMap
+  ? (e: HTMLElementEventMap[T]) => void
+  : (e: Event) => void;
+
 type Listeners = {
   [id: string]: {
     event: string;
     element: HTMLElement;
-    handler: (e: Event) => void;
+    handler: Handler<string>;
   };
 };
 
 export class EventListener {
   private readonly listeners: Listeners = {};
 
-  add(event: string, element: HTMLElement, handler: (e: Event) => void, listenerId = uuid()) {
+  add<T extends string>(event: T, element: HTMLElement, handler: Handler<T>, listenerId = uuid()) {
     this.listeners[listenerId] = {
       event,
       element,
